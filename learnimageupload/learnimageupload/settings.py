@@ -1,4 +1,5 @@
 #https://www.youtube.com/watch?v=RsiXzwesNLQ&list=PLPNDH2COtd60EX8roZCeIddkimMhBlTrX&index=6
+##https://youtu.be/lKyH_ZGtvwM
 #https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
 #partly based on youtube tutorial and partly based on perplxewity answers and based on django storage amazon s3 documentation
 
