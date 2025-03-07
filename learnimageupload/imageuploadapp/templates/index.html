@@ -1,0 +1,17 @@
+{% load widget_tweaks %}
+
+
+<div class="p-8 flex flex-col items-center">
+    <h1 class="font-medium leading-tight text-4xl mt-0 mb-4 text-blue-600">Welcome!</h1>
+    <a class="text-blue-600 tracking-normal mb-4" href="{% url 'list_dogs' %}">View all dogs!</a>
+    
+    <form action="{% url 'upload_form' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+    
+    
+
+
+</div>

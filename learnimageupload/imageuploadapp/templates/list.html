@@ -1,0 +1,28 @@
+{% block content %}
+<div class="p-8 flex flex-col items-center">
+    <a class="text-blue-600 tracking-normal mb-4" href="{% url 'upload_form' %}">Add a dog!</a>
+    {% for dog in dogs %}
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <img class="w-full" src="{{ dog.image.url }}" alt="{{ dog.name }}">
+        <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">{{ dog.name }}</div>
+        <p class="text-gray-700 text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+        </p>
+        <p>Size (bytes): {{ dog.image.size }}
+        <p>Width: {{dog.image.width}}
+        <p>Height: {{dog.image.height}}
+        </div>
+        <div class="mt-4">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"><a href="{% url 'delete_image' dog.pk %}">Delete Image</a>
+                </button>
+        </div>
+        <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}
