@@ -160,10 +160,13 @@ AWS_STORAGE_BUCKET_NAME=env('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME=env('AWS_S3_REGION_NAME')
 #AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')'''
 
+AWS_S3_CUSTOM_DOMAIN=config('AWS_S3_CUSTOM_DOMAIN')
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
+AWS_CLOUDFRONT_KEY=env.str('AWS_CLOUDFRONT_KEY',multiline=True).encode('ascii').strip()
+AWS_CLOUDFRONT_KEY_ID=env.str('AWS_CLOUDFRONT_KEY_ID').strip()
 STORAGES = {
     "default": {
         "BACKEND": "storages.backends.s3.S3Storage",
@@ -172,6 +175,11 @@ STORAGES = {
           "secret_key": AWS_SECRET_ACCESS_KEY,
             "bucket_name": AWS_STORAGE_BUCKET_NAME,
             "region_name": AWS_S3_REGION_NAME,
+             "custom_domain": AWS_S3_CUSTOM_DOMAIN,
+             "cloudfront_key": AWS_CLOUDFRONT_KEY,
+            "cloudfront_key_id": AWS_CLOUDFRONT_KEY_ID,
+            "querystring_expire":20 # Query string expiration time(uploaded image will be available for 20 seconds),
+            
         },
     },
     
@@ -182,8 +190,13 @@ STORAGES = {
             "secret_key": AWS_SECRET_ACCESS_KEY,  # Corrected here
             "bucket_name": AWS_STORAGE_BUCKET_NAME,
             "region_name": AWS_S3_REGION_NAME,
+            "custom_domain": AWS_S3_CUSTOM_DOMAIN,
+            "cloudfront_key": AWS_CLOUDFRONT_KEY,
+            "cloudfront_key_id": AWS_CLOUDFRONT_KEY_ID,
             "location": 'static',  # Path within the bucket for static files
             "default_acl": 'public-read',  # ACL for static files
+            "querystring_expire":20   # Query string expiration time(uploaded image will be available for 20 seconds)
         },
     },
 }
+
